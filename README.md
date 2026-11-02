@@ -2,6 +2,8 @@
 
 這套藍圖能在 5 分鐘內架設完成：前端萬用表單 + Google 試算表歸檔 + Telegram 免費即時推播。
 
+[![Get Universal Web Automation Starter Kit](https://img.shields.io/badge/Buy_Now-$29-blue?style=for-the-badge&logo=lemonsqueezy)](https://crazymankey-shop.lemonsqueezy.com/checkout/buy/8dbdfe65-3208-45b9-8fe8-53d40b33fe1f)
+
 ---
 
 ## 🚀 核心優勢 (Key Features)
