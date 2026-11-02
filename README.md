@@ -6,10 +6,10 @@
 
 ## 🚀 核心優勢 (Key Features)
 
-* **零維護成本**：GitHub Pages (前端) + n8n + Google Sheets + Telegram。
-* **全球時區對齊**：預設 Asia/Taipei (UTC+8) 時間戳記。
-* **零成本推播**：採用 Telegram Bot API，完全免費且無發送上限。
-* **精緻 HTML 排版**：視覺化訊息模組，無廣告頁腳。
+- **零維護成本**：GitHub Pages (前端) + n8n + Google Sheets + Telegram。
+- **全球時區對齊**：預設 Asia/Taipei (UTC+8) 時間戳記。
+- **零成本推播**：採用 Telegram Bot API，完全免費且無發送上限。
+- **精緻 HTML 排版**：視覺化訊息模組，無廣告頁腳。
 
 ---
 
