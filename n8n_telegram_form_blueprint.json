@@ -1,0 +1,171 @@
+{
+  "name": "數學表單數據採集與Telegram通知",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "c280753a-dd93-4568-ad02-d24f7f24eb20",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2.1,
+      "position": [
+        -64,
+        0
+      ],
+      "id": "dc905676-55f1-4c69-a18f-dc76ad7d1707",
+      "name": "接收表單資料",
+      "webhookId": "c280753a-dd93-4568-ad02-d24f7f24eb20"
+    },
+    {
+      "parameters": {
+        "chatId": "7562211029",
+        "text": "=🚨 <b>收到新的表單提交！</b>  \n👤 <b>姓名：</b> {{ $('接收表單資料').item.json.body.name }} \n✉️ <b>Email：</b> {{ $('接收表單資料').item.json.body.email }} \n📝 <b>內容：</b> {{ $('接收表單資料').item.json.body.message }} \n⏰ <b>時間：</b> {{ $now.setZone('Asia/Taipei').toFormat('yyyy-MM-dd HH:mm:ss') }}",
+        "additionalFields": {
+          "appendAttribution": false,
+          "parse_mode": "HTML"
+        }
+      },
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [
+        336,
+        -16
+      ],
+      "id": "dc181cfb-2d65-4e52-86af-edb3ae55e7ad",
+      "name": "發送通知",
+      "webhookId": "15222edd-ed57-478a-b3ac-f4f95f30bdaa",
+      "notesInFlow": false,
+      "alwaysOutputData": false,
+      "credentials": {
+        "telegramApi": {
+          "id": "gjipFeYRaFICPfDo",
+          "name": "Telegram account"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "operation": "append",
+        "documentId": {
+          "__rl": true,
+          "value": "1NRlLzfTncBlAvOz-uIvph4APm765PEzgmGqhu_okfrY",
+          "mode": "list",
+          "cachedResultName": "【招牌服務】潛在客戶需求名單",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NRlLzfTncBlAvOz-uIvph4APm765PEzgmGqhu_okfrY/edit?usp=drivesdk"
+        },
+        "sheetName": {
+          "__rl": true,
+          "value": 562791384,
+          "mode": "list",
+          "cachedResultName": "萬用數據分類",
+          "cachedResultUrl": "https://docs.google.com/spreadsheets/d/1NRlLzfTncBlAvOz-uIvph4APm765PEzgmGqhu_okfrY/edit#gid=562791384"
+        },
+        "columns": {
+          "mappingMode": "defineBelow",
+          "value": {
+            "姓名": "={{ $json.body.name }}",
+            "Email": "={{ $json.body.email }}",
+            "訊息": "={{ $json.body.message }}",
+            "時間": "={{ $now.setZone('Asia/Taipei').toFormat('yyyy-MM-dd HH:mm:ss') }}"
+          },
+          "matchingColumns": [],
+          "schema": [
+            {
+              "id": "姓名",
+              "displayName": "姓名",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "Email",
+              "displayName": "Email",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "訊息",
+              "displayName": "訊息",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            },
+            {
+              "id": "時間",
+              "displayName": "時間",
+              "required": false,
+              "defaultMatch": false,
+              "display": true,
+              "type": "string",
+              "canBeUsedToMatch": true
+            }
+          ],
+          "attemptToConvertTypes": false,
+          "convertFieldsToString": false
+        },
+        "options": {}
+      },
+      "type": "n8n-nodes-base.googleSheets",
+      "typeVersion": 4.7,
+      "position": [
+        128,
+        -16
+      ],
+      "id": "908f3e6e-afe4-4758-b650-64843c64b762",
+      "name": "寫入表單",
+      "credentials": {
+        "googleSheetsOAuth2Api": {
+          "id": "hC8AimQTKvcJaGLb",
+          "name": "Google Sheets account"
+        }
+      }
+    }
+  ],
+  "pinData": {},
+  "connections": {
+    "接收表單資料": {
+      "main": [
+        [
+          {
+            "node": "寫入表單",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "寫入表單": {
+      "main": [
+        [
+          {
+            "node": "發送通知",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "active": true,
+  "settings": {
+    "executionOrder": "v1",
+    "binaryMode": "separate",
+    "availableInMCP": false
+  },
+  "versionId": "1611bc1b-ed02-429d-b552-4d1485388fa0",
+  "meta": {
+    "templateCredsSetupCompleted": true,
+    "instanceId": "417516c5a5aa35dff6fd87247531e92c09a7ddc0221ceae555bacd49f879513d"
+  },
+  "nodeGroups": [],
+  "id": "gKfx6BZjgnHBbGms",
+  "tags": []
+}
